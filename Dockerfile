@@ -4,7 +4,7 @@ FROM ruby:2.4.1-slim
 # well as RubyGems. As the Ruby image itself is based on a
 # Debian image, we use apt-get to install those.
 RUN apt-get update && apt-get install -qq -y\
-  build-essential git-core libpq-dev --fix-missing --no-install-recommends &&\
+  build-essential git-core libpq-dev --fix-missing --no-install-recommends libsqlite3-dev &&\
   apt-get -y clean
 
 # Configure the main working directory. This is the base
@@ -27,6 +27,8 @@ COPY . .
 
 # Set UTF-8 as locale.
 ENV LANG C.UTF-8
+
+EXPOSE 3000
 
 # The main command to run when the container starts. Also
 # tell the Rails dev server to bind to all interfaces by

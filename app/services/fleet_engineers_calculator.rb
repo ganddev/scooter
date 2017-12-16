@@ -43,10 +43,10 @@ class FleetEngineersCalculator
   end
 
   def set_c(rest)
-    if rest < 0
-      @c = rest.abs
-    else
-      @c = 0
-    end
+    @c = if rest < 0
+           rest.abs
+         else
+           @c = 0
+         end
   end
 end
