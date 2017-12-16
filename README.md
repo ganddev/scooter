@@ -1,7 +1,7 @@
 # README
 
 ## Task
-It is expected to find the smalles amount of fleet engineers for a given amount of scooters in district. Theerfor it is expected to create a API or CLI tool.
+It is expected to find the smalles amount of fleet engineers for a given amount of scooters in district. Therefor it is expected to create an API or a CLI tool.
 
 ### Restrictions
 One fleet engineer or fleet manager can only work in one district.
