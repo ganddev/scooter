@@ -10,6 +10,10 @@ RSpec.describe FleetEngineersCalculator do
       let(:c) { 12 }
       let(:p) { 5 }
 
+      it 'is successful' do
+        expect(result.success).to be_truthy
+      end
+
       it 'returns 3 as minimum needed fleet engineers' do
         expect(result.fleet_engineers).to eq 3
       end
@@ -20,8 +24,22 @@ RSpec.describe FleetEngineersCalculator do
       let(:c) { 9 }
       let(:p) { 5 }
 
+      it 'is successful' do
+        expect(result.success).to be_truthy
+      end
+
       it 'returns 7 as minimum needed fleet engineers' do
         expect(result.fleet_engineers).to eq 7
+      end
+    end
+
+    context 'When p is zero' do
+      let(:scooters) { [11, 15, 13] }
+      let(:c) { 9 }
+      let(:p) { 0 }
+
+      it 'returns an error' do
+        expect(result.success).to be_falsy
       end
     end
   end

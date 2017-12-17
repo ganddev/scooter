@@ -13,6 +13,8 @@ module API
         result = FleetEngineersCalculator.perform(params[:scooters],
                                                 params[:c],
                                                 params[:p])
+        error!('There was an error!', 400) unless result.success
+
         present result, with: Entities::FleetEngineersMin
       end
     end

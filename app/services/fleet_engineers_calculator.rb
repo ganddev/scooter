@@ -1,8 +1,9 @@
 class FleetEngineersCalculator
   class Result
-    attr_reader :fleet_engineers
+    attr_reader :fleet_engineers, :success
 
-    def initialize(fleet_engineers)
+    def initialize(success, fleet_engineers)
+      @success = success
       @fleet_engineers = fleet_engineers
     end
   end
@@ -18,17 +19,22 @@ class FleetEngineersCalculator
   end
 
   def perform
+    return Result.new(false, 0) unless valid?
     needed_fes = 0
     scooters.each do |scooter|
       new_scooter = substract_fleet_managers(scooter)
       needed_fes += calculate_fes(new_scooter)
     end
-    Result.new(needed_fes)
+    Result.new(true, needed_fes)
   end
 
   private
 
   attr_reader :scooters, :p, :c
+
+  def valid?
+    return p > 0
+  end
 
   def substract_fleet_managers(scooter)
     return scooter if c <= 0
